@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="BFC应用"><meta name="keywords" content="CSS"><meta name="author" content="chenmoonmo@gmail.com"><meta name="copyright" content="chenmoonmo@gmail.com"><title>BFC应用 | Chenmoonmo's Blog</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script><meta name="generator" content="Hexo 4.2.1"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#可见格式化模型"><span class="toc-number">1.</span> <span class="toc-text">可见格式化模型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#块盒（block-box）"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">块盒（block box）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#行内盒（inline-box）"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">行内盒（inline box）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#匿名盒（anonymous-box）"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">匿名盒（anonymous box）</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三个定位方案"><span class="toc-number">2.</span> <span class="toc-text">三个定位方案</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#常规流（Normal-flow）"><span class="toc-number">2.0.0.1.</span> <span class="toc-text">常规流（Normal flow）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#浮动（Floats）"><span class="toc-number">2.0.0.2.</span> <span class="toc-text">浮动（Floats）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#绝对定位（Absolute-positioning）"><span class="toc-number">2.0.0.3.</span> <span class="toc-text">绝对定位（Absolute positioning）</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#块级格式化上下文"><span class="toc-number">3.</span> <span class="toc-text">块级格式化上下文</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#BFC的范围"><span class="toc-number">3.0.0.1.</span> <span class="toc-text">BFC的范围</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#BFC的效果"><span class="toc-number">3.0.0.2.</span> <span class="toc-text">BFC的效果</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#BFC应用"><span class="toc-number">3.0.0.3.</span> <span class="toc-text">BFC应用</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://avatars1.githubusercontent.com/u/36295999?s=460&amp;u=2abb59fe554eee63b4bca78d6ec82499e7bd1096&amp;v=4"></div><div class="author-info__name text-center">chenmoonmo@gmail.com</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">4</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">2</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Chenmoonmo's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/about">About</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">BFC应用</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-06-16</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h2 id="可见格式化模型"><a href="#可见格式化模型" class="headerlink" title="可见格式化模型"></a>可见格式化模型</h2><p>该模型定义了盒的生成，盒主要包括块盒、行内盒、匿名盒。盒的类型由display属性决定。</p>
+<h5 id="块盒（block-box）"><a href="#块盒（block-box）" class="headerlink" title="块盒（block box）"></a>块盒（block box）</h5><p>块盒有以下特性：</p>
+<ul>
+<li>当元素的CSS属性<code>display</code>为<code>block</code>，<code>list-item</code>或<code>table</code>时，它是块级元素block-leve</li>
+<li>视觉上呈现为块，竖直排列</li>
+<li>块级盒参与（块级格式化上下文）    </li>
+<li>每个块级元素至少生成一个块级盒，称主要块级盒。一些元素，比如<code>&lt;li&gt;</code>,生成额外的盒来放置项目符号，不过多数元素值生成一个主要块级盒。</li>
+</ul>
+<h5 id="行内盒（inline-box）"><a href="#行内盒（inline-box）" class="headerlink" title="行内盒（inline box）"></a>行内盒（inline box）</h5><ul>
+<li>当元素的CSS属性<code>display</code>为 <code>inline</code>， <code>inline-block</code> 或者<code>inline-table</code>时，他为行内级元素。</li>
+<li>视觉上他将与内容与其他行内级元素排列为多行，典型的如段落内容，有文本或图片，都是行内级元素。</li>
+<li>行内级元素生成行内级盒，参与行内格式化上下文（IFC）。同时参与生成行内格式化上下文的行内级盒称为行内盒。所有<code>display:inline</code>的非替换元素生成的盒时行内盒。</li>
+<li>不参与生成行内格式化上下文的行内级盒称为院子行内级盒。这些盒由可替换行内元素或display为<code>inline-block</code> 或<code>inline-table</code>的元素生成，不能拆分成多个盒。</li>
+</ul>
+<h5 id="匿名盒（anonymous-box）"><a href="#匿名盒（anonymous-box）" class="headerlink" title="匿名盒（anonymous box）"></a>匿名盒（anonymous box）</h5><p>没有名字，无法用选择器选择，所有属性都为inherit或默认值。</p>
+<div>    
+  Some inline text //匿名盒
+  <p>followed by a paragraph</p> 块级盒
+  followed by more inline text.  //匿名盒
+</div>//块盒
+
+<h2 id="三个定位方案"><a href="#三个定位方案" class="headerlink" title="三个定位方案"></a>三个定位方案</h2><p>在定位的时候，浏览器就会根据元素的盒类型盒上下文对这些元素进行定位，可以说盒就是定位的基本单位。定位时，有三种定位方案，分别是常规流，浮动以及绝对定位。</p>
+<h5 id="常规流（Normal-flow）"><a href="#常规流（Normal-flow）" class="headerlink" title="常规流（Normal flow）"></a>常规流（Normal flow）</h5><ul>
+<li>在常规流中，盒一个接着一个排列</li>
+<li>在<strong>块级格式化上下文</strong>中，他们<strong>竖直</strong>排列</li>
+<li>在<strong>行内格式化上下文</strong>中，他们<strong>横着</strong>排列</li>
+<li>当<code>position</code>为<code>static</code>或<code>relative</code>，并且<code>float</code>为<code>none</code>时会触发常规流</li>
+<li>对于<strong>静态定位</strong>，<code>position: static</code>，<strong>盒的位置是常规流布局里的位置</strong></li>
+<li>对于<strong>相对定位</strong>，<code>position: relative</code>，盒的位置偏移由<code>top</code>， ``bottom<code>，</code>left<code>和</code>right`定义。<strong>即使有偏移，依然保留原有位置</strong>，其他常规流不能占用这个位置。</li>
+</ul>
+<h5 id="浮动（Floats）"><a href="#浮动（Floats）" class="headerlink" title="浮动（Floats）"></a>浮动（Floats）</h5><ul>
+<li>盒成为浮动盒</li>
+<li>它位于当前行的开头或末尾</li>
+<li>这导致常规流环绕在他的周边，除非设置clear属性</li>
+</ul>
+<h5 id="绝对定位（Absolute-positioning）"><a href="#绝对定位（Absolute-positioning）" class="headerlink" title="绝对定位（Absolute positioning）"></a>绝对定位（Absolute positioning）</h5><ul>
+<li>绝对定位方案，<strong>盒从常规流中被移除</strong>，不影响常规流的布局</li>
+<li>它的定位相对于它的包含块，相关CSS属性：<code>top</code>， ``bottom<code>，</code>left<code>和</code>right`</li>
+<li>如果元素的<code>position</code>属性为<code>absolute</code>或<code>fixed</code>，它是绝对定位元素</li>
+<li>对于<code>position：absolute</code>，元素定位将相对于最近的一个<code>relative</code>、<code>fixed</code>或<code>absolute</code>的父元素，如果没有则相对于<code>body</code></li>
+</ul>
+<h2 id="块级格式化上下文"><a href="#块级格式化上下文" class="headerlink" title="块级格式化上下文"></a>块级格式化上下文</h2><p>块级格式化上下文是页面CSS视觉渲染的一部分，<strong>用于决定块盒子的布局及浮动相互影响范围的一个区域</strong>。</p>
+<p><strong>BFC的创建方法</strong></p>
+<ul>
+<li>根元素或其他包含它的元素</li>
+<li><strong>浮动</strong>（元素的<code>float</code>不为<code>none</code>）</li>
+<li><strong>绝对定位元素</strong>（元素的<code>position</code>为<code>absolute</code>或<code>fxied</code>）</li>
+<li><strong>行内块</strong>（元素的<code>display</code>为<code>inline-block</code>）</li>
+<li><strong>表格单元格</strong>（元素的<code>display</code>为<code>table-cell</code>）</li>
+<li><code>overflow</code>的值不为<code>visible</code>的元素</li>
+<li><strong>弹性盒</strong>（元素的<code>display</code>为<code>flex</code>或<code>inline-flex</code>）</li>
+</ul>
+<p>但其中最常见的就是<code>overflow：hidden</code>、<code>float：left/right</code>、<code>position：absolute</code>。</p>
+<p>也就是说，看见这些属性的时候，就代表该元素创建了一个BFC。</p>
+<h5 id="BFC的范围"><a href="#BFC的范围" class="headerlink" title="BFC的范围"></a>BFC的范围</h5><p><strong>一个元素不能同时存在于两个BFC中</strong>，BFC最重要的效果是，让处于BFC内部的元素与外部的元素相互隔离，使内外元素的定位不会相互影响。这是BFC清除浮动利用的特性。</p>
+<h5 id="BFC的效果"><a href="#BFC的效果" class="headerlink" title="BFC的效果"></a>BFC的效果</h5><p>BFC的最显著效果就是建立一个隔离的空间，断绝空间内外元素间的相互作用。</p>
+<p>BFC的其他特性：</p>
+<ol>
+<li>内部的盒会在垂直方向一个接一个排列</li>
+<li>处于同一个BFC中的元素相互影响，可能发生margin重叠</li>
+<li>每个元素margin box的左边，与容器块border box的左边相接触（对于从左往右的格式化，否则相反）即使存在浮动也是如此。</li>
+<li>BFC就是页面上的一个隔离的独立容器。容器里面的字元素不会影响到外面的元素，反之亦然</li>
+<li>计算BFC高度时，考虑BFC所包含的所有元素，连浮动元素也参与计算</li>
+<li>浮动盒区域不叠加到BFC上</li>
+</ol>
+<h5 id="BFC应用"><a href="#BFC应用" class="headerlink" title="BFC应用"></a>BFC应用</h5><p>1.解决margin叠加问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;</span><br><span class="line">hello world</span><br><span class="line">&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p&gt;</span><br><span class="line">hello world</span><br><span class="line">&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p&gt;</span><br><span class="line">hello world</span><br><span class="line">&lt;&#x2F;p&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">p &#123;</span><br><span class="line">	color:black;</span><br><span class="line">  background: #FF0000;</span><br><span class="line">	width: 200px;</span><br><span class="line">	line-height: 100px;</span><br><span class="line">	text-align:center;</span><br><span class="line">	margin: 50px;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>三个p之间的距离为50px，发生了margin重叠。要解决这个问题让每个p之间时100px，我们可以给p添加一个父元素 ，让他触发BFC（overflow：hidden）</p>
+<p>2.用于两栏布局</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&#39;aside&#39;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;div class&#x3D;&#39;main&#39;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">body &#123;</span><br><span class="line">	position: relative</span><br><span class="line">&#125;</span><br><span class="line">.aside &#123;</span><br><span class="line">	width: 100px;</span><br><span class="line">	height: 150px;</span><br><span class="line">	float: left;</span><br><span class="line">	background: blue;</span><br><span class="line">&#125;</span><br><span class="line">.main &#123;</span><br><span class="line">	height: 200px;</span><br><span class="line">	background:#f00;</span><br><span class="line">	overflow:hidden;&#x2F;&#x2F;给main添加BFC</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>利用了<strong>浮动盒区域不叠加到BFC上</strong>这一特性</p>
+<p>3.用于清除浮动，计算BFC高度</p>
+<p>当子元素浮动时，父元素会发生高度坍塌，需要让父元素包含两个浮动元素的高度时，触发父元素的BFC（overflow：hidden）</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">chenmoonmo@gmail.com</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://chenmoonmo.github.io/2020/06/16/BFC%E5%BA%94%E7%94%A8/">http://chenmoonmo.github.io/2020/06/16/BFC%E5%BA%94%E7%94%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CSS/">CSS</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/2020/06/15/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/"><span>深拷贝和浅拷贝</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2020 By chenmoonmo@gmail.com</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>
