@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="精通CSS读书笔记"><meta name="keywords" content="CSS"><meta name="author" content="chenmoonmo@gmail.com"><meta name="copyright" content="chenmoonmo@gmail.com"><title>精通CSS读书笔记 | Chenmoonmo's Blog</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script><meta name="generator" content="Hexo 4.2.1"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-添加样式"><span class="toc-number">1.</span> <span class="toc-text">2.添加样式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#选择器"><span class="toc-number">1.0.1.</span> <span class="toc-text">选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#优先级"><span class="toc-number">1.0.2.</span> <span class="toc-text">优先级</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#插入CSS"><span class="toc-number">1.0.3.</span> <span class="toc-text">插入CSS</span></a></li></ol></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://avatars1.githubusercontent.com/u/36295999?s=460&amp;u=2abb59fe554eee63b4bca78d6ec82499e7bd1096&amp;v=4"></div><div class="author-info__name text-center">chenmoonmo@gmail.com</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">6</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">2</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Chenmoonmo's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/about">About</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">精通CSS读书笔记</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-06-17</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>最近开始读《精通CSS 高级Web标准解决方案》一书，本文做一个要点整理供复习和记录。</p>
+<h2 id="2-添加样式"><a href="#2-添加样式" class="headerlink" title="2.添加样式"></a>2.添加样式</h2><h4 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h4><p>1.选择符</p>
+<ul>
+<li>标签选择器 <code>p {font-size: 16px}</code></li>
+<li>后代选择器  在两个选择符之间添加空格 <code>div p {...}</code></li>
+<li>ID选择器 #ID <code>#container{...}</code></li>
+<li>类选择器 .Class <code>.container{...}</code></li>
+<li>子代选择器 &gt; <code>.container&gt;.title {...}</code></li>
+<li>相邻同辈选择器 + 选择位于该元素后面，并与该元素有共同父元素的元素</li>
+<li>通配符 * 选择可以匹配的任何元素</li>
+<li>属性选择器  [属性] [属性=值] 选择具有某个属性或某个属性为某值的元素。</li>
+</ul>
+<p>2.伪元素</p>
+<ul>
+<li>::first-letter 选择文本的第一个字符</li>
+<li>::first-line 选择文本的第一行</li>
+<li>::before 存在于内容开头的假想元素</li>
+<li>::after 存在于内容结尾的假想元素</li>
+</ul>
+<p>::after和::before通过content属性以文本的形式插入，主要作用为插入字体图标或者清除浮动。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;::after清除浮动</span><br><span class="line">floatElement::after &#123;</span><br><span class="line">  content: &quot;.&quot;; </span><br><span class="line">  display: block; </span><br><span class="line">  height: 0; </span><br><span class="line">  clear: both; </span><br><span class="line">  visibility: hidden;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.伪类</p>
+<ul>
+<li>:link 未访问过的链接</li>
+<li>:visited 访问过的链接</li>
+<li>:hover 鼠标悬停</li>
+<li>:active 已选中的链接</li>
+<li>:foucs 获取键盘焦点</li>
+<li>:target 在页尾出现的ID</li>
+<li>:not() 不为括号内的选择器</li>
+</ul>
+<p>前四个伪类出现顺序为lvha</p>
+<p>4.结构化伪类</p>
+<ul>
+<li>:nth-child()</li>
+<li>:nth-last-child()</li>
+<li>:first-child 第一个子元素</li>
+<li>:last-child 最后一个子元素</li>
+<li>:nth-of-type() </li>
+<li>:first-of-type 最后一个该类型的元素</li>
+<li>:last-of-type 第一个该类型的元素</li>
+</ul>
+<p>:nth-child() :nth-last-child()和nth-of-type() 可以接受odd，even，数字或者带n的公式作为参数。</p>
+<p>5.表单伪类</p>
+<ul>
+<li>:required 选择带有required属性的表单元素</li>
+<li>:optional 选择没有required属性的控件</li>
+<li>:valid 有效</li>
+<li>:invalid 无效</li>
+</ul>
+<h4 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h4><p>层叠是CSS用来解决同一个元素有多条样式的冲突的规则。</p>
+<p>样式优先级：</p>
+<p><strong>!important&gt;行内样式&gt;ID选择器&gt;Class选择器&gt;标签和伪元素选择器&gt;通配符&gt;继承</strong></p>
+<p>其中行内样式的特殊性为1000，ID选择器为100，Class选择器为10，标签和伪元素选择器为</p>
+<p>1，通配符为0</p>
+<p>特殊性相同时，同一个样式表中后出现的样式生效，不同样式表采用就近原则，距离该元素最近的样式表的样式生效。</p>
+<p>注意点：</p>
+<ul>
+<li>避免使用!important</li>
+<li>利用id选择器增加权重</li>
+<li>减少选择器的个数（避免层层嵌套）</li>
+</ul>
+<h4 id="插入CSS"><a href="#插入CSS" class="headerlink" title="插入CSS"></a>插入CSS</h4><p>方法：</p>
+<ul>
+<li>直接写在style元素中</li>
+<li>style中链接载入 <style> @import url(“c/modules.css”) </style></li>
+<li>html标签行内式</li>
+<li>link载入（推荐） <link rel="stylesheet" herf="css/sheet.css"></li>
+</ul>
+<p>性能：</p>
+<ul>
+<li>不要把CSS放在body里面或者页面底部</li>
+<li>在HTML底部</body>之前加载JS，或者在<head>中使用<script>但添加async和defer属性。</li>
+<li>减少文件数量来减少http请求次数</li>
+<li>压缩和缓存文件</li>
+</ul>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">chenmoonmo@gmail.com</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://chenmoonmo.github.io/2020/06/17/%E7%B2%BE%E9%80%9ACSS%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">http://chenmoonmo.github.io/2020/06/17/%E7%B2%BE%E9%80%9ACSS%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CSS/">CSS</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/2020/06/16/CSS%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80/"><span>CSS常见布局</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2020 By chenmoonmo@gmail.com</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>
