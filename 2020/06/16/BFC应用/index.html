@@ -22,11 +22,10 @@
 <li>不参与生成行内格式化上下文的行内级盒称为院子行内级盒。这些盒由可替换行内元素或display为<code>inline-block</code> 或<code>inline-table</code>的元素生成，不能拆分成多个盒。</li>
 </ul>
 <h5 id="匿名盒（anonymous-box）"><a href="#匿名盒（anonymous-box）" class="headerlink" title="匿名盒（anonymous box）"></a>匿名盒（anonymous box）</h5><p>没有名字，无法用选择器选择，所有属性都为inherit或默认值。</p>
-<div>    
-  Some inline text //匿名盒
-  <p>followed by a paragraph</p> 块级盒
-  followed by more inline text.  //匿名盒
-</div>//块盒
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;    </span><br><span class="line">  Some inline text &#x2F;&#x2F;匿名盒</span><br><span class="line">  &lt;p&gt;followed by a paragraph&lt;&#x2F;p&gt; 块级盒</span><br><span class="line">  followed by more inline text.  &#x2F;&#x2F;匿名盒</span><br><span class="line">&lt;&#x2F;div&gt;&#x2F;&#x2F;块盒</span><br></pre></td></tr></table></figure>
+
+
+
 
 <h2 id="三个定位方案"><a href="#三个定位方案" class="headerlink" title="三个定位方案"></a>三个定位方案</h2><p>在定位的时候，浏览器就会根据元素的盒类型盒上下文对这些元素进行定位，可以说盒就是定位的基本单位。定位时，有三种定位方案，分别是常规流，浮动以及绝对定位。</p>
 <h5 id="常规流（Normal-flow）"><a href="#常规流（Normal-flow）" class="headerlink" title="常规流（Normal flow）"></a>常规流（Normal flow）</h5><ul>
