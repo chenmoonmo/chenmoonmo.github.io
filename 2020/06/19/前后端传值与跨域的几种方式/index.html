@@ -1,0 +1,176 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="跨域的几种方式"><meta name="keywords" content="Ajax, HTML, JavaScript"><meta name="author" content="chenmoonmo@gmail.com"><meta name="copyright" content="chenmoonmo@gmail.com"><title>跨域的几种方式 | Chenmoonmo's Blog</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script><meta name="generator" content="Hexo 4.2.1"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前后端通信方式"><span class="toc-number">1.</span> <span class="toc-text">前后端通信方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#AJAX（Asynchronous-JavaScript-and-XML）"><span class="toc-number">1.0.1.</span> <span class="toc-text">AJAX（Asynchronous JavaScript and XML）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#fetch"><span class="toc-number">1.0.2.</span> <span class="toc-text">fetch</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#axios"><span class="toc-number">1.0.3.</span> <span class="toc-text">axios</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#同源政策"><span class="toc-number">2.</span> <span class="toc-text">同源政策</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#跨域"><span class="toc-number">3.</span> <span class="toc-text">跨域</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#jsonp-JSON-with-padding"><span class="toc-number">3.0.1.</span> <span class="toc-text">jsonp (JSON with padding)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CORS-Cross-Orgin-resource-sharing-跨域资源共享"><span class="toc-number">3.0.2.</span> <span class="toc-text">CORS(Cross-Orgin resource sharing) 跨域资源共享</span></a></li></ol></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://avatars1.githubusercontent.com/u/36295999?s=460&amp;u=2abb59fe554eee63b4bca78d6ec82499e7bd1096&amp;v=4"></div><div class="author-info__name text-center">chenmoonmo@gmail.com</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">9</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">5</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Chenmoonmo's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/about">About</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">跨域的几种方式</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-06-19</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h2 id="前后端通信方式"><a href="#前后端通信方式" class="headerlink" title="前后端通信方式"></a>前后端通信方式</h2><h4 id="AJAX（Asynchronous-JavaScript-and-XML）"><a href="#AJAX（Asynchronous-JavaScript-and-XML）" class="headerlink" title="AJAX（Asynchronous JavaScript and XML）"></a>AJAX（Asynchronous JavaScript and XML）</h4><p>AJAX是浏览器提供的一套可以实现页面无刷新更新数据的方法，可以提高用户的浏览体验。</p>
+<p>应用场景：</p>
+<ol>
+<li>页面上拉加载更多</li>
+<li>列表数据无刷新分页</li>
+<li>表单离开焦点数据验证</li>
+<li>搜索框提示文字下拉列表</li>
+</ol>
+<p>AJAX实现步骤</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 创建AJAX对象</span><br><span class="line">let xhr &#x3D; new XMLHttpRequest()</span><br><span class="line">&#x2F;&#x2F; 给AJAX绑定请求方式地址</span><br><span class="line">xhr.open(&#39;get&#x2F;post&#39;, &#39;url&#39;)</span><br><span class="line">&#x2F;&#x2F; 发送请求</span><br><span class="line">xhr.send</span><br><span class="line">&#x2F;&#x2F; 获取服务端给客户端的响应数据</span><br><span class="line">xhr.onload &#x3D; function() &#123;</span><br><span class="line">	console.log(xhr.responseText)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>请求参数传递</p>
+<ul>
+<li><p>get: url?key1=value1&amp;key2=value2…  遍历拼接字符串</p>
+</li>
+<li><p>post: xhr.sed(params)  传递JSON字符串参数  JSON.stringify() 将对象转为JSON字符串</p>
+</li>
+</ul>
+<p>请求头设置</p>
+<ul>
+<li>get: xhr.setRequestHeader(‘content-Type’, ‘application/x-www-form-urlencoded’)</li>
+<li>post:  xor.setRequestHeader(‘content-Type’, ‘application/json’)</li>
+</ul>
+<p>get请求和传统表单都不能提交JSON格式</p>
+<p>AJAX状态码(使用xhr.readystate获取 写在send方法之前)</p>
+<p>0: 请求为初始化</p>
+<p>1: 请求已经建立，但还没有发送</p>
+<p>2: 请求已经发送</p>
+<p>3: 请求正在处理中</p>
+<p>4: 响应已经完成，可以获取并使用服务器响应的数据了</p>
+<p>oneadystatechange 事件：当AJAX状态码变化时自动触发</p>
+<p><strong>最好在onreadystatechange事件中判断readystate为4时，再接受xhr.responseText</strong></p>
+<p>AJAX封装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">function ajxa(options) &#123;</span><br><span class="line">    &#x2F;&#x2F; 默认值</span><br><span class="line">    let defaults &#x3D; &#123;</span><br><span class="line">        type: &#39;get&#39;,</span><br><span class="line">        url: &#39;&#39;,</span><br><span class="line">        data: &#123;&#125;,</span><br><span class="line">        header: &#123;</span><br><span class="line">            &#39;Content-Type&#39;:&#39;application&#x2F;x-www-form-urlencoded&#39;</span><br><span class="line">            &#125;,</span><br><span class="line">        success: function () &#123;&#125;,</span><br><span class="line">        error: function () &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#x2F;&#x2F; 使用options中的值替换defaults中的值</span><br><span class="line">    Object.assign(defaults, options)</span><br><span class="line">    &#x2F;&#x2F; 创建ajax对象</span><br><span class="line">    let xhr &#x3D; new XMLHttpRequest()</span><br><span class="line">    &#x2F;&#x2F; 拼接字符串</span><br><span class="line">    let params &#x3D; &#39;&#39;</span><br><span class="line">    for (let i in defaults.data) &#123;</span><br><span class="line">        params +&#x3D; &#96;$&#123;i&#125;&#x3D;$&#123;defaults[i]&#125;&amp;&#96;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;截掉最后的&amp;</span><br><span class="line">    params &#x3D; params.slice(0, params.length - 1)</span><br><span class="line">    &#x2F;&#x2F; 判断请求方式 如果为get则拼接url</span><br><span class="line">    if (defaults.type &#x3D;&#x3D;&#x3D; &#39;get&#39;) &#123;</span><br><span class="line">        defaults.url &#x3D; defaults.url + &#39;?&#39; + params</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F; 配置ajax对象</span><br><span class="line">    ajax.open(defaults.type, defaults.url)</span><br><span class="line">    &#x2F;&#x2F; 判断请求方式 如果为post则修改请求头</span><br><span class="line">    if (defaults.type &#x3D;&#x3D;&#x3D; &#39;post&#39;) &#123;</span><br><span class="line">        &#x2F;&#x2F; 修改请求头</span><br><span class="line">        xhr.setRequestHeader(&#39;Content-Type&#39;, defaults.header[&#39;Content-Type&#39;])</span><br><span class="line">        &#x2F;&#x2F; 判断用户希望的请求参数格式</span><br><span class="line">        &#x2F;&#x2F; 如果为json</span><br><span class="line">        if (defaults.header[&#39;Content-Type&#39;] &#x3D;&#x3D;&#x3D; &#39;application&#x2F;json&#39;) &#123;</span><br><span class="line">            &#x2F;&#x2F;	发送json格式的数据</span><br><span class="line">            xhr.send(JSON.stringify(defaults.data))</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            &#x2F;&#x2F;否则发送普通类型的参数</span><br><span class="line">            xhr.send(params)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        &#x2F;&#x2F; 请求方式为get 直接发送请求</span><br><span class="line">        xhr.send();</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;判断onreeadystatechange事件</span><br><span class="line">    xhr.onreadystatechange &#x3D; function () &#123;</span><br><span class="line">        &#x2F;&#x2F; 判断readystate是否为4</span><br><span class="line">        if (xhr.ready.readystate &#x3D;&#x3D;&#x3D; 4) &#123;</span><br><span class="line">            &#x2F;&#x2F; 判断服务器状态码</span><br><span class="line">            let status &#x3D; xhr.status</span><br><span class="line">            if (status &gt;&#x3D; 200 &amp;&amp; status &lt; 300) &#123;</span><br><span class="line">                &#x2F;&#x2F; 接受内容</span><br><span class="line">                let respons &#x3D; &#39;&#39;</span><br><span class="line">                &#x2F;&#x2F; 判断接受的数据类型</span><br><span class="line">                let type &#x3D; xhr.getResponseHeader(&#39;Content-Type&#39;)</span><br><span class="line">                if (type &#x3D;&#x3D;&#x3D; &#39;application&#x2F;json&#39;) &#123;</span><br><span class="line">                    response &#x3D; JSON.parse(xhr.responseText) &#x2F;&#x2F;json响应</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    response &#x3D; xhr.responseText &#x2F;&#x2F;字符串响应</span><br><span class="line">                &#125;</span><br><span class="line">                &#x2F;&#x2F; 成功回调函数</span><br><span class="line">                defaluts.success &amp;&amp; defaluts.success(response)</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                &#x2F;&#x2F; 失败处理函数</span><br><span class="line">                defaluts.error &amp;&amp; defaluts.error(status)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;调用 </span><br><span class="line">ajax(&#123;</span><br><span class="line">	type: &#39;post&#39;,</span><br><span class="line">	url: &#39;127.0.01:3000&#x2F;api&#39;</span><br><span class="line">	success: function (data) &#123;</span><br><span class="line">		console.log(data)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h4><p>fetch是一种基于promise实现的功能更加强大，更灵活，更简单的数据获取方式，可看作是xhr的升级版，ES6原生方法。</p>
+<p>fetch使用方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fetch(&#39;url&#39;,&#123;params&#125;).then(data &#x3D;&gt; &#123;</span><br><span class="line">	return data.text() &#x2F;&#x2F;返回一个promise对象</span><br><span class="line">&#125;).then(ret &#x3D;&gt; &#123;</span><br><span class="line">	console.log(ret) &#x2F;&#x2F; 得到数据</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>fetch请求参数</p>
+<ul>
+<li>请求方法 method(string): ‘get’获取数据, ‘post’传输数据, ‘put’修改数据, ‘delete’删除数据</li>
+<li>请求参数 body(string)</li>
+<li>请求头    headers(object)</li>
+<li>是否跨域 mode: ‘cors’</li>
+</ul>
+<p>get和delete</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fetch(&#39;url?key&#x3D;value&#39;;&#123; &#x2F;&#x2F;或 url&#x2F;value</span><br><span class="line">	method: &#39;get&#39; &#x2F;&#x2F; 或‘delete’</span><br><span class="line">&#125;).then...</span><br></pre></td></tr></table></figure>
+
+<p>post和put</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fetch(&#39;url&#39;; &#123;</span><br><span class="line">	method: &#39;post&#39;, &#x2F;&#x2F;或put</span><br><span class="line">	body: JSON.stringify(&#123;key:value&#125;),</span><br><span class="line">	headers: &#123;</span><br><span class="line">		&#39;Content-Type&#39;: &quot;application&#x2F;x-www-from-urlencoded&quot; &#x2F;&#x2F;或application&#x2F;json</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>fetch响应结果</p>
+<ul>
+<li>text() 将返回体处理成字符串类型</li>
+<li>josn() 返回结果和JSON.parse(response)一样的对象类型</li>
+</ul>
+<h4 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h4><p>axios是基于promise用于浏览器和node.js的HTTP客户端，是第三方库。</p>
+<p>特征：</p>
+<ul>
+<li>支持浏览器和node.js</li>
+<li>支持promise</li>
+<li>能拦截请求和响应</li>
+<li>自动转换为JSON数据</li>
+</ul>
+<p>浏览器用法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">axios.get(&#39;url&#39;) &#x2F;&#x2F;get post put 或 delete</span><br><span class="line">		 .then(ret &#x3D;&gt; &#123;</span><br><span class="line">		 		console.log(ret.data)</span><br><span class="line">		 &#125;)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">get和delete传参</th>
+<th align="center">服务器端</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">axios.get(‘/path?key=value’)</td>
+<td align="center">req.query</td>
+</tr>
+<tr>
+<td align="center">axios.get(‘/path/value’)</td>
+<td align="center">App.get(‘path?:参数名’)</td>
+</tr>
+<tr>
+<td align="center">通过params选项传参数</td>
+<td align="center">req.query</td>
+</tr>
+</tbody></table>
+<p>params传参：</p>
+<p>Axis.get(‘/path’,{</p>
+<p>​    params: {</p>
+<p>​        key: value</p>
+<p>​    }</p>
+<p>})</p>
+<p>post和put传参</p>
+<ul>
+<li>通过选项传递参数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">axios.post(&#39;&#x2F;path&#39;,&#123;</span><br><span class="line">	key1: value1,</span><br><span class="line">	...</span><br><span class="line">&#125;)...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过URLSearchParams传参(application/x-www-form-urlencoded)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const params &#x3D; new URLSearchParams();</span><br><span class="line">Params.append(&#39;key1&#39;, &#39;value1&#39;) ...</span><br><span class="line">axios.post(&#39;&#x2F;path&#39;,params)</span><br></pre></td></tr></table></figure>
+
+<p>axios的响应结果</p>
+<p>主要属性：</p>
+<ul>
+<li>data 实际响应的数据</li>
+<li>headers 响应头信息</li>
+<li>status 服务器状态码</li>
+<li>statusText 响应状态信息</li>
+</ul>
+<p>axios全局配置</p>
+<ul>
+<li>超时时间 axios.defaults.timeout = 3000</li>
+<li>默认地址  axios.defaults.baseURl = ‘http://…’</li>
+<li>设置请求头 axios.header[‘…’] = ‘…’</li>
+</ul>
+<p>axios拦截器</p>
+<ul>
+<li>请求拦截器： 在请求发出前发出一些信息</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">axios.interCeptors.request.use(function(config) &#123;</span><br><span class="line">	&#x2F;&#x2F; 发送请求前的设置</span><br><span class="line">	config.headers.mytoken &#x3D; &#39;...&#39;</span><br><span class="line">	return config</span><br><span class="line">&#125;, function(err) &#123;</span><br><span class="line">	&#x2F;&#x2F;处理错误请求</span><br><span class="line">	return Promise.rej(err)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>响应拦截器: 在服务器数据响应给客户端之前做一些加工处理</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">axios.interCeptors.response.use(function(res) &#123;</span><br><span class="line">	&#x2F;&#x2F;处理响应数据</span><br><span class="line">	return res</span><br><span class="line">&#125;, function(err) &#123;</span><br><span class="line">	&#x2F;&#x2F;处理错误信息</span><br><span class="line">	return Promise.rej(err)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="同源政策"><a href="#同源政策" class="headerlink" title="同源政策"></a>同源政策</h2><p>同源：两个页面拥有相同的协议、域名和端口</p>
+<p>同源政策：出于保护用户信息的安全，防止网站窃取数据，不同源的页面之间不能互相请求信息，<code>&lt;/img&gt;</code>和<code>&lt;script&gt;</code>标签例外。</p>
+<h2 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h2><h4 id="jsonp-JSON-with-padding"><a href="#jsonp-JSON-with-padding" class="headerlink" title="jsonp (JSON with padding)"></a>jsonp (JSON with padding)</h4><p>实现原理：</p>
+<ul>
+<li>前端通过script标签传递一个callback函数名给后端</li>
+<li>后端返回callbak(params) 这个函数自动执行</li>
+</ul>
+<p>前端实现的异步封装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">function jsonp(url,options) &#123;</span><br><span class="line">            &#x2F;&#x2F; 对象解构 获取函数名和超时</span><br><span class="line">            const &#123;timeout,funcName&#125; &#x3D; options</span><br><span class="line">            return new Promise((res,rej) &#x3D;&gt; &#123;</span><br><span class="line">                let time &#x3D; null,scriptNode</span><br><span class="line">                &#x2F;&#x2F; 定义回调函数</span><br><span class="line">                window[funcName] &#x3D; function (data) &#123;</span><br><span class="line">                    &#x2F;&#x2F; 清除定时器</span><br><span class="line">                    if(timeout) clearTimeout(time)</span><br><span class="line">                    res(data)</span><br><span class="line">                    &#x2F;&#x2F; 清除回调函数和script节点</span><br><span class="line">                    delete funcName</span><br><span class="line">                    document.body.removeChild(scriptNode)</span><br><span class="line">                &#125;</span><br><span class="line">                &#x2F;&#x2F; 创建script标签</span><br><span class="line">                scriptNode &#x3D; document.createElement(&#39;script&#39;)</span><br><span class="line">                &#x2F;&#x2F; 给script标签添加src</span><br><span class="line">                scriptNode.src &#x3D; &#96;$&#123;url&#125;?callback&#x3D;$&#123;options.funcName&#125;&#96;</span><br><span class="line">                &#x2F;&#x2F; 发出请求 src标签一加到dom里就会发出请求</span><br><span class="line">                document.body.appendChild(scriptNode)</span><br><span class="line">                &#x2F;&#x2F; 设置定时器</span><br><span class="line">                time &#x3D; setTimeout(()&#x3D;&gt;&#123;</span><br><span class="line">                    rej(&#39;network err, timeout&#39;)</span><br><span class="line">                &#125;, timeout)</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; 调用jsonp</span><br><span class="line">        jsonp(&#39;http:&#x2F;&#x2F;127.0.0.1:3000&#x2F;api&#39;,&#123;</span><br><span class="line">            timeout: 3000,</span><br><span class="line">            funcName: &#39;jsp&#39;</span><br><span class="line">        &#125;)</span><br><span class="line">        .then(res &#x3D;&gt; &#123;</span><br><span class="line">            for(let i of res) &#123;</span><br><span class="line">                console.log(i)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>node.js后端实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const express &#x3D; require(&#39;express&#39;)</span><br><span class="line">const path &#x3D; require(&#39;path&#39;)</span><br><span class="line">const url &#x3D; require(&#39;url&#39;)</span><br><span class="line">const server &#x3D; express()</span><br><span class="line">let data &#x3D; [&#39;js&#39;, &#39;node&#39;]</span><br><span class="line">server.get(&#39;&#x2F;api&#39;, (req, res) &#x3D;&gt; &#123;</span><br><span class="line">    let myurl &#x3D; url.parse(req.url)</span><br><span class="line">    let params &#x3D; new URLSearchParams(myurl.query)</span><br><span class="line">    let mathodName &#x3D; params.get(&#39;callback&#39;)</span><br><span class="line">    res.send(&#96;$&#123;mathodName&#125;($&#123;JSON.stringify(data)&#125;)&#96;)</span><br><span class="line">&#125;)</span><br><span class="line">		.listen(3000, () &#x3D;&gt; &#123;</span><br><span class="line">    console.log(&#39;服务器已启动&#39;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="CORS-Cross-Orgin-resource-sharing-跨域资源共享"><a href="#CORS-Cross-Orgin-resource-sharing-跨域资源共享" class="headerlink" title="CORS(Cross-Orgin resource sharing) 跨域资源共享"></a>CORS(Cross-Orgin resource sharing) 跨域资源共享</h4><p>浏览器端无需操作</p>
+<p>服务器端设置</p>
+<ul>
+<li>允许哪些客户端访问</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res.header(&#39;Access-Control-Allow-Orgin&#39;,&#39;*&#39;) &#x2F;&#x2F;*表示允许所以服务端访问</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>允许哪些请求方法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">res.header(&#39;Access-control-Allow-Methods&#39;,&#39;post,get&#39;) &#x2F;&#x2F; 不设置时只允许简单请求</span><br><span class="line">&#x2F;&#x2F;简单请求为 post，get</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">chenmoonmo@gmail.com</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://chenmoonmo.github.io/2020/06/19/%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BC%A0%E5%80%BC%E4%B8%8E%E8%B7%A8%E5%9F%9F%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/">http://chenmoonmo.github.io/2020/06/19/%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BC%A0%E5%80%BC%E4%B8%8E%E8%B7%A8%E5%9F%9F%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Ajax-HTML-JavaScript/">Ajax, HTML, JavaScript</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/2020/06/18/%E6%98%93%E9%94%99%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/"><span>易错知识总结</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2020 By chenmoonmo@gmail.com</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>
