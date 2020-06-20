@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="服务器相关知识"><meta name="keywords" content=""><meta name="author" content="chenmoonmo@gmail.com"><meta name="copyright" content="chenmoonmo@gmail.com"><title>服务器相关知识 | Chenmoonmo's Blog</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script><meta name="generator" content="Hexo 4.2.1"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#服务器"><span class="toc-number">1.</span> <span class="toc-text">服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#http和https"><span class="toc-number">1.0.1.</span> <span class="toc-text">http和https</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP协议三次握手和四次挥手"><span class="toc-number">1.0.2.</span> <span class="toc-text">TCP协议三次握手和四次挥手</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#常见http返回状态吗"><span class="toc-number">1.0.3.</span> <span class="toc-text">常见http返回状态吗</span></a></li></ol></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://avatars1.githubusercontent.com/u/36295999?s=460&amp;u=2abb59fe554eee63b4bca78d6ec82499e7bd1096&amp;v=4"></div><div class="author-info__name text-center">chenmoonmo@gmail.com</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">11</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">5</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Chenmoonmo's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/about">About</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">服务器相关知识</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-06-20</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><h4 id="http和https"><a href="#http和https" class="headerlink" title="http和https"></a>http和https</h4><p>http: 超文本传输协议，是一个客户端和服务器请求和应答的标准，用于从WWW服务器传输超文本到本地浏览器的传输协议。<strong>传输的是未加密的明文信息。</strong></p>
+<p>https: 是以安全为目标的http通道，https协议是<strong>由SSL和http协议</strong>构建的可进行<strong>加密传输、身份认证</strong>的网络协议，比http更安全。</p>
+<p>https协议的工作原理：</p>
+<ul>
+<li>客户使用https url访问服务器，则要求web服务器建立ssl链接</li>
+<li>web服务器接收到客户端请求后，将网站的证书（证书中包含了公钥）返回给客户端</li>
+<li>客户端和web服务器开始协商ssl链接的安全等级</li>
+<li>浏览器通过双方协商一致的安全等级，建立会话密钥，然后通过网站的公钥加密会话密钥，并传送给网站</li>
+<li>web服务器通过自己的私钥解密出会话密钥</li>
+<li>web服务器通过会话密钥加密与客户端之间的通信</li>
+</ul>
+<p>https协议的优缺点：</p>
+<p>优点： </p>
+<ul>
+<li>使用https协议可以认证用户和服务器，确保数据发送到正确的客户端和服务器</li>
+<li>比http协议更安全，可以防止数据在传输过程中不被窃取、改变，确保数据的完整性</li>
+<li>增大了中间人攻击的成本</li>
+<li>谷歌搜索引擎算法，使用https加密的网站排名会更高</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>握手阶段比较费时，会事页面加载时间延长50%，增加10%-20%的耗电</li>
+<li>https缓存不如http高效，会增加数据开销</li>
+<li>ssl证书费用开销大</li>
+<li>ssl证书需要绑定ip，不能在同一个ip上绑定多个域名</li>
+</ul>
+<p>Http2.0:</p>
+<p>Http2.0是基于1999年发布的http1.0的首次更新。</p>
+<p>相比http1.0 </p>
+<p>提升了访问速度</p>
+<p>允许多路复用（允许同时通过单一的http/2连接发送多重请求-响应信息）</p>
+<p>二进制分帧： http2.0会将所有的传输信息分割为更小的信息或帧，并将他们进行二进制编码</p>
+<p>首部压缩</p>
+<p>服务器端推送</p>
+<h4 id="TCP协议三次握手和四次挥手"><a href="#TCP协议三次握手和四次挥手" class="headerlink" title="TCP协议三次握手和四次挥手"></a>TCP协议三次握手和四次挥手</h4><p>TCP的特性：</p>
+<ul>
+<li>TCP提供一种面向连接的、可靠的字节流服务</li>
+<li>在一个TCP连接中，仅有两方进行彼此通信，广播和多播不能用于TCP</li>
+<li>TCP使用校验，确认和重传几只来保证可靠传输</li>
+<li>TCP给数据分节进行排序，并使用累积确认保证数据的顺序不变和非重复</li>
+<li>TCP使用滑动窗口机制来实现流量控制，通过动态改变窗口大小进行拥塞控制。</li>
+</ul>
+<p>三次握手：建立一个tcp连接时，服务器和客户端总共发3个包。</p>
+<p>三次握手的目的：连接服务器指定端口，建立TCP连接，同步双方的序列号和确认号，交换TCP窗口大小信息。</p>
+<ul>
+<li>第一次握手： 起初两端都处于CLOSED关闭状态，Client将标识为SYN置为1，随机产生一个值seq=x，并将数据包发给Server，Client进入SYN-SENT状态，等待Server确认。</li>
+<li>第二次握手： Server收到数据包后由标志位SYN=1得知Client请求建立连接，Server将标志位SYN和ACK都置为1，ack=x+1，随机产生一个值seq=y，并将该数据包发送给Client以确认连接请求，server进入syn-rcvd状态，此时操作系统为该TCP连接分配TCP缓存和变量</li>
+<li>第三次握手：Client收到确认后，检查ack是否为x+1，ACK是否为1，如果正确则将标识为ACK置为1，ack=y+1，并且此时操作系统为该TCP连接分配TCP缓存和变量，并将该数据包发送给Server，Server检查ack是否为y+1，ACK是否为1，如果正确则连接建立成功，Client和Server进入ESTABLISHED状态，完成三次握手后，Client和Server就可以开始传输数据</li>
+</ul>
+<p>四次挥手：TCP连接的拆除需要发送四个包，因此称为四次挥手，客户端和服务器均可主动发起挥手动作。</p>
+<ul>
+<li>第一次挥手：客户端发送一个FIN标志位置为1的包，表示自己已经没有数据可以发送了，但是依然可以接受数据，发送完毕后，客户端进入FIN_WAIT_1状态。</li>
+<li>第二次挥手：服务器端确认客户端的FIN包，发送一个确认包，表明自己接受到了客户端关闭连接的请求，但还没有准备好关闭连接。发送完毕后，服务器端进入CLOSE_WAIT状态，客户端收到这个确认包后，进入FIN_WAIT_2状态，等待服务器关闭连接。</li>
+<li>第三次挥手：服务器准备好关闭连接时，向客户端发送结束连接请求，FIN置为1。发送完毕后，服务器端进入LAST_ACK状态，等待来自客户端的最后一个ACK。</li>
+<li>第四次挥手：客户端接收到来自服务器端的关闭请求，发送一个确认包，并进入TIME_WAIT状态，等待可能出现的要求重传的ACK包。服务器端接受到这个确认状态后，关闭连接，进入CLOSED状态。客户端等待了某个固定时间之后，没有收到服务器的ACK，认为服务器端已经正常关闭连接，于是自己也关闭连接，进入CLOSED状态</li>
+</ul>
+<h4 id="常见http返回状态吗"><a href="#常见http返回状态吗" class="headerlink" title="常见http返回状态吗"></a>常见http返回状态吗</h4><table>
+<thead>
+<tr>
+<th align="center">状态码</th>
+<th align="center">响应类型</th>
+<th align="center">原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1xx</td>
+<td align="center">信息性状态码</td>
+<td align="center">服务器正在处理请求</td>
+</tr>
+<tr>
+<td align="center">2xx</td>
+<td align="center">成功状态码</td>
+<td align="center">请求已正常处理完毕</td>
+</tr>
+<tr>
+<td align="center">3xx</td>
+<td align="center">重定向状态码</td>
+<td align="center">需要进行额外操作以完成请求</td>
+</tr>
+<tr>
+<td align="center">4xx</td>
+<td align="center">客户端错误状态码</td>
+<td align="center">客户端原因导致服务器无法处理请求</td>
+</tr>
+<tr>
+<td align="center">5xx</td>
+<td align="center">服务器错误状态码</td>
+<td align="center">服务器原因导致处理请求出错</td>
+</tr>
+</tbody></table>
+<p><strong>2XX 成功</strong></p>
+<p>200 Ok 请求成功。一般用于get和post请求</p>
+<p>204 No Content 无内容。 服务器处理成功，但未返回内容。</p>
+<p>206 Partial Content 部分内容。 服务器成功处理完部分GET请求。</p>
+<p><strong>3XX 重定向</strong></p>
+<p>301 Moved Permanently 永久重定向。 请求的资源已经永久被移动到新的位置，返回信息包括新的URI，浏览器会自动定向到新URI。</p>
+<p>302 Found 临时重定向。 请求的资源临时搬到了其他位置。</p>
+<p>303 See Other 查看其他地址。 请求资源存在另一个URI，应使用GET定向获取请求资源。</p>
+<p>304 Not Modified 未修改。 所请求的资源未修改，不会返回任何资源。</p>
+<p>307 Temporary Redirect 临时重定向。 与302类似，使用GET请求重定向。</p>
+<p><strong>4XX 客户端错误</strong></p>
+<p>400 Bad Request 客户端请求语法错误，服务器无法理解。</p>
+<p>401 Unauthorized 认证失败</p>
+<p>403 Forbiden 服务器拒绝请求</p>
+<p>404 Not Found 服务器无法根据客户端的请求找到资源</p>
+<p><strong>5XX 服务器错误</strong></p>
+<p>500 Internal Server Error 服务器内部错误，无法完成请求</p>
+<p>503 Server Unavailable 服务器超负载或停机维护</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">chenmoonmo@gmail.com</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://chenmoonmo.github.io/2020/06/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">http://chenmoonmo.github.io/2020/06/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"></div><nav id="pagination"><div class="next-post pull-right"><a href="/2020/06/20/promise%E5%92%8Casync-await/"><span>promise和async await</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2020 By chenmoonmo@gmail.com</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>
