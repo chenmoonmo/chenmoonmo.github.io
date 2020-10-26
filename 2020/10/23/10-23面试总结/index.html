@@ -7,7 +7,7 @@
     error: 'Copy error',
     noSupport: 'The browser does not support'
   }
-} </script><meta name="generator" content="Hexo 4.2.1"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-v-if和v-for的优先级"><span class="toc-number">1.</span> <span class="toc-text">1. v-if和v-for的优先级</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-v-on-能绑定多个事件吗"><span class="toc-number">2.</span> <span class="toc-text">2.v-on 能绑定多个事件吗</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-说说你用过的Vue指令"><span class="toc-number">3.</span> <span class="toc-text">3.说说你用过的Vue指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-v-if-和v-show的区别"><span class="toc-number">4.</span> <span class="toc-text">4.v-if 和v-show的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Vue生命周期"><span class="toc-number">5.</span> <span class="toc-text">5.Vue生命周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Vue组件传值，祖孙传值"><span class="toc-number">6.</span> <span class="toc-text">6.Vue组件传值，祖孙传值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-VueX，怎么解决刷新问题"><span class="toc-number">7.</span> <span class="toc-text">7.VueX，怎么解决刷新问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-localstorage和sessionstorage，怎么清除localstorage"><span class="toc-number">8.</span> <span class="toc-text">8. localstorage和sessionstorage，怎么清除localstorage</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://avatars1.githubusercontent.com/u/36295999?s=460&amp;u=2abb59fe554eee63b4bca78d6ec82499e7bd1096&amp;v=4"></div><div class="author-info__name text-center">chenmoonmo@gmail.com</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">18</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">9</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Chenmoonmo's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/about">About</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">10.23面试总结</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-10-23</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><blockquote>
+} </script><meta name="generator" content="Hexo 4.2.1"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-v-if和v-for的优先级"><span class="toc-number">1.</span> <span class="toc-text">1. v-if和v-for的优先级</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-v-on-能绑定多个事件吗"><span class="toc-number">2.</span> <span class="toc-text">2.v-on 能绑定多个事件吗</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-说说你用过的Vue指令"><span class="toc-number">3.</span> <span class="toc-text">3.说说你用过的Vue指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-v-if-和v-show的区别"><span class="toc-number">4.</span> <span class="toc-text">4.v-if 和v-show的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Vue生命周期"><span class="toc-number">5.</span> <span class="toc-text">5.Vue生命周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Vue组件传值，祖孙传值"><span class="toc-number">6.</span> <span class="toc-text">6.Vue组件传值，祖孙传值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-VueX，怎么解决刷新问题"><span class="toc-number">7.</span> <span class="toc-text">7.VueX，怎么解决刷新问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-cookie，localStorage和sessionStorage"><span class="toc-number">8.</span> <span class="toc-text">8. cookie，localStorage和sessionStorage</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-怎么清除localStorage"><span class="toc-number">9.</span> <span class="toc-text">9.怎么清除localStorage</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-怎么跨域"><span class="toc-number">10.</span> <span class="toc-text">10. 怎么跨域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-HTML5-CSS3新特性"><span class="toc-number">11.</span> <span class="toc-text">11.HTML5 CSS3新特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-不同分辨率的适配，px和rem的区别"><span class="toc-number">12.</span> <span class="toc-text">12.不同分辨率的适配，px和rem的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-前端性能优化"><span class="toc-number">13.</span> <span class="toc-text">13. 前端性能优化</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://avatars1.githubusercontent.com/u/36295999?s=460&amp;u=2abb59fe554eee63b4bca78d6ec82499e7bd1096&amp;v=4"></div><div class="author-info__name text-center">chenmoonmo@gmail.com</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">18</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">9</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Chenmoonmo's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/about">About</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">10.23面试总结</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-10-23</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><blockquote>
 <p>先说点题外话：今天去面试的地方在天目山脚下，公交车一下车就是天目里，在阿里西溪总部对面，名字里沾了浙江大学，走在路上我都带着些许胆颤。在BOSS上职位描述的东西超少-熟悉HTML,css,js,vue,ElementUI-，进去之后理所当然的自我介绍，然后就开始问面试题，最后说我不合适的理由是项目涉及多端，我没用过Echarts，没写过小程序。为什么不在JD上写清楚呢，但是这次面试，暴露出的问题也蛮多的，还是谢谢！</p>
 <p>回来的时候一路经过买过的粑粑坊，小区门口S咪的分店，去过的盲人按摩，最后来josh写写博客。</p>
 </blockquote>
@@ -183,11 +183,117 @@
 <li><p>在mutations中定义改变变量的同步方法</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  changeCity(state, city)&#123;</span><br><span class="line">    state.city = city</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      loacalStorage.city = city  <span class="comment">//将数据缓存到本地</span></span><br><span class="line">    &#125; <span class="keyword">catch</span>(e) &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
 </li>
 </ol>
-<h4 id="8-localstorage和sessionstorage，怎么清除localstorage"><a href="#8-localstorage和sessionstorage，怎么清除localstorage" class="headerlink" title="8. localstorage和sessionstorage，怎么清除localstorage"></a>8. localstorage和sessionstorage，怎么清除localstorage</h4></div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">chenmoonmo@gmail.com</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://chenmoonmo.github.io/2020/10/23/10-23%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/">http://chenmoonmo.github.io/2020/10/23/10-23%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%A2%E7%BB%8F/">面经</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/2020/10/23/github%E9%A1%B9%E7%9B%AE%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"><span>github vue项目源码分析</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2020 By chenmoonmo@gmail.com</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+<h4 id="8-cookie，localStorage和sessionStorage"><a href="#8-cookie，localStorage和sessionStorage" class="headerlink" title="8. cookie，localStorage和sessionStorage"></a>8. cookie，localStorage和sessionStorage</h4><ol>
+<li>cookies: 单个cookie有4KB的大小限制，主要用途是保存登录信息。</li>
+<li>localStorage: HTML5新技术，用于数据的本地储存，除非主动清除，否则一直保存。</li>
+<li>sessionStorage:  生命周期和localStorage不同，页面刷新后数据依旧存在，当页面关闭后数据就会被清空。</li>
+</ol>
+<p><strong>三者的区别</strong></p>
+<table>
+  <tr>
+      <th>特性</td>
+    <th>cookie</td>
+    <th>localStorage</td>
+    <th>sessionStorage</td>
+  </tr>
+  <tr>
+    <td>数据生命周期</td>
+    <td>一般由服务器生成，可设置失效时间。如果是在浏览器生成，默认是关闭浏览器就无效。</td>
+    <td>除非被清除，否则永久保存</td>
+    <td>仅在当前会话有效，刷新页面或关闭浏览器时失效</td>
+    </tr>
+<tr>
+      <td>同源限制</td>
+      <td>始终在同源http请求中携带</td>
+      <td>在同源页面共享</td>
+          <td>不在同源页面共享</td>
+        </tr>
+        <tr>
+      <td>存放数据的大小</td>
+      <td>4KB左右</td>
+      <td colspan="2">一般为5MB</td>
+        </tr>
+<tr>
+      <td>与服务端通信</td>
+      <td>每次都会携带到同源请求的HTTP头中，如果使用过多cookie保存过多数据会带来性能问题</td>
+      <td colspan="2">仅在客户端保存，不参与与服务端的通信</td>
+        </tr>
+</table>
+
+
+
+<p><strong>安全性</strong></p>
+<p>都有受到XSS注入的风险，不要用cookie，localStorage和sessionStorage储存系统中的敏感数据。</p>
+<p><strong>localStorage和sessionStorage的操作方法</strong></p>
+<ul>
+<li>setItem 存储数据 storage.setItem(‘key’,’value’)</li>
+<li>removeItem 移除数据 storage.removeItem(‘key’)</li>
+<li>clear 清除数据 storage.clear()</li>
+</ul>
+<h4 id="9-怎么清除localStorage"><a href="#9-怎么清除localStorage" class="headerlink" title="9.怎么清除localStorage"></a>9.怎么清除localStorage</h4><p>清除浏览器缓存</p>
+<h4 id="10-怎么跨域"><a href="#10-怎么跨域" class="headerlink" title="10. 怎么跨域"></a>10. 怎么跨域</h4><p>JSONp</p>
+<p>通过<code>&lt;script&gt;</code>标签的src向服务器传递处理函数名，服务器返回函数名+参数然后执行。</p>
+<p>CROS 跨域资源共享</p>
+<p>Nginx反向代理</p>
+<h4 id="11-HTML5-CSS3新特性"><a href="#11-HTML5-CSS3新特性" class="headerlink" title="11.HTML5 CSS3新特性"></a>11.HTML5 CSS3新特性</h4><ul>
+<li>HTML5<ul>
+<li>语义化标签 </li>
+<li>canvas 画布 使用JS绘制</li>
+<li>拖动元素 将draggable属性设置为true</li>
+<li>audio、video标签</li>
+<li>color、date、datetime、datetime-local、email、month、number、range、search、tel、time、url、week等input类型</li>
+<li>储存 sessionstorage和localstorage</li>
+</ul>
+</li>
+<li>CSS3<ul>
+<li>边框：圆角、边框图片、元素阴影</li>
+<li>背景属性：</li>
+<li>渐变： 线性渐变 background: inear-gradient (direction, color-stop1, color-stop2, …) 径向渐变 radial-gradien</li>
+<li>文字效果：文字溢出text-overflow 文字阴影text-shadow</li>
+<li>转换和变形</li>
+<li>过渡</li>
+<li>关键帧动画</li>
+<li>CSS3盒模型</li>
+<li>Flex伸缩布局</li>
+<li>媒体查询</li>
+</ul>
+</li>
+</ul>
+<h4 id="12-不同分辨率的适配，px和rem的区别"><a href="#12-不同分辨率的适配，px和rem的区别" class="headerlink" title="12.不同分辨率的适配，px和rem的区别"></a>12.不同分辨率的适配，px和rem的区别</h4><ul>
+<li><p>CSS媒体查询 @media screen and (min-width:411px) and (max-width:1024px){…style}</p>
+</li>
+<li><p>bootstrap前端框架</p>
+</li>
+<li><p>JS查询 + rem</p>
+</li>
+<li><p>百分比布局</p>
+</li>
+<li><p>vh、vw布局</p>
+</li>
+</ul>
+<p>px是物理的像素点，1px就是一个像素点的大小。</p>
+<p>rem是根元素字体的大小，即HTML元素字体的大小。</p>
+<h4 id="13-前端性能优化"><a href="#13-前端性能优化" class="headerlink" title="13. 前端性能优化"></a>13. 前端性能优化</h4><p>1.减少资源文件的大小和数量</p>
+<ul>
+<li>压缩和合并CSS和JS文件</li>
+<li>使用字体图标或svg替代png</li>
+<li>采用图片懒加载</li>
+<li>采用雪碧图</li>
+<li>减少cookie的使用</li>
+<li>合理使用keep-alive</li>
+</ul>
+<p>2.代码优化</p>
+<ul>
+<li>JS减少闭包的使用</li>
+<li>减少DOM操作，避免引起重绘和回流</li>
+<li>避免JS嵌套循环</li>
+<li>将JS放在body下，CSS放在body上</li>
+<li>减少CSS表达式的使用</li>
+<li>CSS选择器从右向左解析，避免将标签选择器作为最后一个</li>
+</ul>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">chenmoonmo@gmail.com</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://chenmoonmo.github.io/2020/10/23/10-23%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/">http://chenmoonmo.github.io/2020/10/23/10-23%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%A2%E7%BB%8F/">面经</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/2020/10/23/github%E9%A1%B9%E7%9B%AE%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"><span>github vue项目源码分析</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2020 By chenmoonmo@gmail.com</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
   $('#nav').addClass('is-mobile')
   $('footer').addClass('is-mobile')
   $('#top-container').addClass('is-mobile')
