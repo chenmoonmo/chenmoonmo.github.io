@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="11.27 工作问题汇总"><meta name="keywords" content=""><meta name="author" content="chenmoonmo@gmail.com"><meta name="copyright" content="chenmoonmo@gmail.com"><title>11.27 工作问题汇总 | Chenmoonmo's Blog</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script><meta name="generator" content="Hexo 4.2.1"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://avatars1.githubusercontent.com/u/36295999?s=460&amp;u=2abb59fe554eee63b4bca78d6ec82499e7bd1096&amp;v=4"></div><div class="author-info__name text-center">chenmoonmo@gmail.com</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">21</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">9</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Chenmoonmo's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/about">About</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">11.27 工作问题汇总</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-11-27</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><ul>
+<li><p>CSS 选择器应用</p>
+<p>之前写都是类加标签选择器使用less嵌套走天下，但是最近的开发中还是遇到了一些比较特殊的选择需求(主要是在覆盖elemetntUi的默认样式)</p>
+<ul>
+<li><p><code>:not()</code></p>
+<p>反选伪类选择器，选择除在括号内的元素之外的元素。</p>
+<p>除了反选外还可以用来提高优先级</p>
+<p>该选择器无法排除所有的父元素</p>
+</li>
+<li><p><code>[type=&quot;&quot;]</code></p>
+<p>属性选择器，这个算是一个比较基本的选择器，但使用的时候怎么也没想起来。可以选择拥有某属性或者特定属性值的元素。</p>
+</li>
+<li><p><code>/deep/</code></p>
+<p>深度选择器，在vue中需要覆盖一些ui库的样式，但是ui库都是以组件的形式使用的，而写样式的CSS为scoped的时候，样式并不会对子组件起作用。</p>
+<p>深度选择器可以使样式对子组件也起作用。</p>
+<p>可以不写多层<code>/deep/</code>，父类有deep后，子类也会自动深度选择。</p>
+</li>
+</ul>
+<p>总结一下，感觉自己对CSS的选择器使用不够灵活，less语法也只停留在嵌套和定义变量，还需要加强这方面的思维。</p>
+</li>
+<li><p>Vue给img元素动态绑定src属性失效问题</p>
+<p>直接为图片写src，图片正常加载。使用v-bind绑定后，图片加载失败。</p>
+<p>解决方法：</p>
+<ul>
+<li>使用绝对路径</li>
+<li>使用require() 包裹路径返回</li>
+</ul>
+</li>
+<li><p>Vue在created 生命周期发起请求获取数据后，在后面获取不到信息。</p>
+<p>自己在定义请求函数时，为函数加了async 来在函数内部获取数据并操作。但是这样导致这个请求函数变成异步函数，所以在后面的同步操作进行时，请求还没结束。所以没办法获取数据。</p>
+<p>解决办法： 在这个函数后面使用then，在里面写后续操作来保证请求完成。</p>
+</li>
+<li><p>flex布局遇到的问题 还没想到答案</p>
+<ul>
+<li>使用flex布局，在IOS显示的时候，给元素加margin，元素的一部分被截取了(很像overflow:hidden)，但是把元素的flex属性删除之后，这个效果就消失了。</li>
+<li>移动端flex布局，主容器不要设为height：100%，而应该设为min-height：100%。</li>
+</ul>
+</li>
+<li><p>移动端input偶尔不能输入的问题，没找到解决方法，记录一下。</p>
+</li>
+<li><p>Vue3使用插槽语法，这个是其他同学遇到的，当作学习记录下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;template v-slot:name&#x3D;&quot;slotProps&quot;&gt;</span><br><span class="line">...</span><br><span class="line">&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure>
+
+<p>首先要使用template作为插入元素的容器，然后使用v-slot:name 指令指定具名插槽，后面的=用来绑定传递值。</p>
+</li>
+<li><p>然后是一个工具问题，今天正常写代码，VScode却只有一行提示，非常不方便。然后谷歌之，发现用鼠标拖下来就可以了…</p>
+</li>
+<li><p>最后是最近的一个疑问，该不该升级big sur呢，吃饭的家伙，好怕升级后崩了啊。</p>
+</li>
+</ul>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">chenmoonmo@gmail.com</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://chenmoonmo.github.io/2020/11/27/11-27-%E5%B7%A5%E4%BD%9C%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/">http://chenmoonmo.github.io/2020/11/27/11-27-%E5%B7%A5%E4%BD%9C%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"></div><nav id="pagination"><div class="next-post pull-right"><a href="/2020/11/24/11-24-%E5%B7%A5%E4%BD%9C%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/"><span>11.24 工作问题汇总</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2020 By chenmoonmo@gmail.com</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>
